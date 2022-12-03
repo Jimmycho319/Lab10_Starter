@@ -17,7 +17,7 @@
   <script src="https://unpkg.com/launchdarkly-js-client-sdk@2"></script>
 </head>
 
-<body class="blue">
+<body>
   <header>
     <nav>
       <a href="speechSynth.html" title="Go to speech synthesizer">Speech Synthesizer</a>
@@ -53,10 +53,6 @@
     };
 
 
-
-
-
-
     // Create a new LDClient instance with your environment-specific SDK key
     var ldclient = LDClient.initialize('638a9c39211141108f62d388', user);
 
@@ -65,7 +61,7 @@
       var label = (flagValue ? 'Showing' : 'Not showing') + ' your feature to ' + user.key;
       console.log("SDK successfully connected! The value of blue-background is " + flagValue + " for " + user.key)
       if (flagValue == true) {
-        document.getElementById
+        document.querySelector('body').className = 'blue';
       }
     }
 
