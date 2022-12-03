@@ -17,7 +17,7 @@
   <script src="https://unpkg.com/launchdarkly-js-client-sdk@2"></script>
 </head>
 
-<body>
+<body class="blue">
   <header>
     <nav>
       <a href="speechSynth.html" title="Go to speech synthesizer">Speech Synthesizer</a>
@@ -46,15 +46,16 @@
   <script>
     // Set up the user properties. This user should appear on your LaunchDarkly users dashboard
     // soon after you run the demo.
+
+    let r = (Math.random() + 1).toString(36).substring(7);
     var user = {
-      name: 'Bob Loblaw',
-      key: 'example-user-key',
+      key: r,
     };
 
-    var div = document.createElement('div');
-    document.body.appendChild(div);
 
-    div.appendChild(document.createTextNode('Initializing...'));
+
+
+
 
     // Create a new LDClient instance with your environment-specific SDK key
     var ldclient = LDClient.initialize('638a9c39211141108f62d388', user);
@@ -63,7 +64,9 @@
       var flagValue = ldclient.variation('blue-background', false);
       var label = (flagValue ? 'Showing' : 'Not showing') + ' your feature to ' + user.key;
       console.log("SDK successfully connected! The value of blue-background is " + flagValue + " for " + user.key)
-      div.replaceChild(document.createTextNode(label), div.firstChild);
+      if (flagValue == true) {
+        document.getElementById
+      }
     }
 
     ldclient.on('ready', render);
